@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메세지 전송</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c2f33;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: #7289da;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        form {
+            background: #40444b;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+        }
+        label {
+            margin-top: 10px;
+            display: block;
+        }
+        input[type="text"], input[type="password"], textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #7289da;
+            margin-bottom: 10px;
+            background-color: #2f3136;
+            color: #ffffff;
+        }
+        button {
+            background-color: #7289da;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #5b6eae;
+        }
+        #statusMessage {
+            margin-top: 10px;
+            text-align: center;
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div id="messageDiv" style="display: none;">
+        <h1>메세지 전송</h1>
+        <form id="webhookForm">
+            <label for="message">메시지 (선택):</label>
+            <textarea id="message" rows="4"></textarea>
+            <label for="file">파일 선택:</label>
+            <input type="file" id="file" accept="*/*">
+            <button type="submit">전송</button>
+            <button type="button" id="cancelButton">취소</button>
+            <div id="statusMessageWebhook"></div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
