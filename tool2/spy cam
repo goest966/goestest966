@@ -1,0 +1,9 @@
+git clone https://github.com/thelinuxchoice/spycam
+
+cd spycam
+
+bash install.sh
+
+chmod +x spycam
+
+./spycam
