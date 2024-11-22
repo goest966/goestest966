@@ -1,0 +1,30 @@
+import discord
+from discord.ext import commands, tasks
+
+intents = discord.Intents.default()
+intents.presences = True
+intents.members = True
+
+bot = commands.Bot(command_prefix='!', intents=intents)
+
+target_user_id = "YOUR_USER_ID_HERE"  
+
+@bot.event
+async def on_ready():
+    print(f'Logged in as {bot.user}')
+
+@tasks.loop(minutes=5)
+async def keep_online():
+    target_user = await bot.fetch_user(target_user_id)
+    if target_user:
+        try:
+            await target_user.edit(nick=target_user.display_name)  
+        except discord.Forbidden:
+            print(f"Couldn't edit nickname for {target_user}")
+
+@keep_online.before_loop
+async def before_keep_online():
+    await bot.wait_until_ready()
+
+keep_online.start()
+bot.run('YOUR_BOT_TOKEN')
